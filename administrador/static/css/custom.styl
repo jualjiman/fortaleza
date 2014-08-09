@@ -1,0 +1,160 @@
+/////////////////////////IMPORTS///////////////////////
+@import "fonts.css"
+////////////////////////COLOR PALLETE///////////////////
+lbrown = #cfb9b4
+nbrown = #a4867a
+dbrown = #493838
+
+borders = #e2dfd6
+nwhite = #f3f2ed
+dwhite = #f2efe8
+nblack = #2e2a2c
+
+lettergray = #727272
+ngray = #969193
+dgray = #5e5a5b
+
+lorange = #d77458
+norange = #d34c25
+
+/////////////////////ALIGNMENTE VARS///////////////////
+mMarButton = 15px
+lMarTop = 24px
+
+*
+	font-family 'Open Sans', sans-serif
+	
+header 
+	background dbrown
+	transition opacity 0.3s ease
+p
+	color lettergray
+
+#mainContent
+	margin-top 50px
+
+#map-content
+	min-height 300px
+	background grisClaro
+
+.mainOrange
+	color norange
+
+.cwhite
+	color nwhite
+
+.dwhite
+	background dwhite
+
+.submenu
+	background dbrown
+	border-bottom solid 5px norange
+
+.productosPrincipal
+	background nwhite
+	padding-top 15px
+	padding-bottom 15px
+	border-bottom solid 1px darken(dwhite,10%)
+
+
+footer
+	.fstFooter
+		background dbrown
+		padding 10px 0
+		span
+			display block
+			color nwhite
+			font-size 10px
+			text-align center
+
+	.secFooter
+		background dwhite
+		height 25px
+
+.asking-block
+	background norange
+	padding 15px 0 20px 0
+// ===========TIPOGRAFIAS========================
+.typo18px
+	font-size 18px
+	font-weight bold
+// ===========ESPECIFICAS========================
+.alinearBotonAsk
+	vertical-align top
+	margin-left 10px
+
+.navbar-opacity
+	opacity .8
+
+// =============ALIGNMENT===========
+.addBottomMediumMargin
+	margin-bottom mMarButton
+
+.addTopLargeMargin
+	margin-top lMarTop
+
+.setInline-Block
+	display inline-block
+
+// ============BS CUSTOM============
+
+.navbar-header
+	img
+		width 30px
+		vertical-align top
+		margin-top 5px
+	h1
+		margin 0 0 0 5px
+		display inline-block
+		font-size 30px
+
+	.navbar-brand
+		padding 8px 15px
+
+a.thumbnail 
+a.thumbnail
+	&:hover
+	&:focus
+		border solid 1px norange
+a.thumbnail.active
+	border solid 1px norange
+
+.thumbnail 
+	> img
+		border-radius 3px 
+	a 
+		> img
+			border-radius 3px 
+
+.badge
+	padding 7px 7px
+
+
+.btn
+	transition background 0.3s ease, color 0.3s ease
+.nav
+	> li
+		> a
+			@extend .btn
+.list-group-item
+	@extend .btn
+	cursor pointer
+
+.carousel-control 
+	.icon-prev 
+	.icon-next 
+	.icon-arrow-left
+	.icon-arrow-right
+		position absolute
+		top 50%
+		z-index 5
+		display inline-block
+		font-size 50px
+.alert-info
+.alert-warning
+.alert-danger
+	display none
+
+.jumbotron
+	background dwhite
+	margin-bottom 0 
