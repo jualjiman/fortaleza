@@ -122,11 +122,9 @@ def busqueda(request):
 					pbusqueda = Busqueda.objects.get(palabra=pista)
 					pbusqueda.repeticiones += pbusqueda.repeticiones
 					pbusqueda.save()
-					pista = "segun incremento"
 				except Busqueda.DoesNotExist:
 					pbusqueda = Busqueda(palabra=pista)
 					pbusqueda.save()
-					pista = "no incremento nada"
 
 				textoBusqueda = 'Resultados para "' + pista + '"'
 				return render(request, 'busqueda.html', {
