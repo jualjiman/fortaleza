@@ -98,16 +98,17 @@ def imgProducto(request):
 	    elif num_img == "5":
 	    	producto.imagen = producto.imagen4
 	    else:
-	    	producto.imagen = "No llego"
+	    	producto.imagen = "Error al cargar la imagen"
 
 	    return render(request, "imgProducto.html",{"producto":producto})
 	else:
 		return HttpResponse('Error al cargar la imagen')
 
 def busqueda(request):
-	if request.method == 'POST': # If the form has been submitted...
+	if request.method == 'GET': # If the form has been submitted...
         # ContactForm BusquedaForm was defined in the previous section
-		searchform = BusquedaForm(request.POST) # A form bound to the POST data
+        #FUNCIONA PERFECTAMENTE POR GET O POST
+		searchform = BusquedaForm(request.GET) # A form bound to the POST data
 		if searchform.is_valid(): # All validation rules pass
 	        # Process the data in form.cleaned_data
 	        # ...
@@ -116,7 +117,7 @@ def busqueda(request):
 				muebles = Mueble.objects.filter(Q(activo = True), Q(titulo__contains=pista) | Q(descripcion__contains=pista) | Q(acabado__titulo__contains=pista) | Q(madera__titulo__contains=pista))
 				categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True, nombre__contains=pista).order_by("votos")
 				acabados = Acabado.objects.filter(Q(activo = True), Q(titulo__contains=pista) | Q(descripcion__contains=pista))
-				maderas  = Madera.objects.filter(activo = True, titulo__contains=pista)
+				maderas  = Madera.objects.filter(Q(activo = True), Q(titulo__contains=pista) | Q(descripcion__contains=pista))
 
 				try:
 					pbusqueda = Busqueda.objects.get(palabra=pista)

@@ -47,8 +47,7 @@
 			        <li><a href="/contacto/"><span class="icon-contact"></span>Contacto</a></li>
 			      </ul>
 			      
-			      <form class="navbar-form navbar-right" role="search" action="/busqueda/" method="POST">
-			      	{% csrf_token %}
+			      <form class="navbar-form navbar-right" role="search" action="/busqueda/" method="GET">
 		        	<div class="form-group">
 		          		{# <input type="text" class="form-control" placeholder="¿Qué estas buscando?"> #}
 		          		{{ searchform.pista.errors }}
@@ -71,9 +70,9 @@
 							{% for acabado in acabados %}
 								{% thumbnail acabado.imagen "400x400" crop="center" as im%}
 								<div class="col-xs-6 col-sm-4 col-md-2">
-									<div class="thumbnail mainOrange">
+									<a href="/busqueda/?pista={{acabado.titulo.split|join:"+"}}" class="thumbnail mainOrange">
 								      <img src="{{ im.url }}" alt="...">
-								    </div>
+								    </a>
 								    <p class="text-center mainOrange">{{acabado.titulo}}</p>
 								</div>
 								{% endthumbnail %}
@@ -86,9 +85,9 @@
 						{% for madera in maderas %}
 							{% thumbnail madera.imagen "400x400" crop="center" as im%}
 							<div class="col-xs-6 col-sm-4 col-md-2">
-								<div class="thumbnail mainOrange">
+								<a href="/busqueda/?pista={{madera.titulo.split|join:"+"}}" class="thumbnail mainOrange">
 							      <img src="{{ im.url }}" alt="...">
-							    </div>
+							    </a>
 							    <p class="text-center mainOrange">{{madera.titulo}}</p>
 							</div>
 							{% endthumbnail %}
@@ -103,6 +102,9 @@
 				<h4 class="cwhite setInline-Block">¿Te gustó? Luciría <strong>espectacular!</strong></h4>
 				<a href="/contacto/" class="btn btn-primary alinearBotonAsk typo18px">Ordena ahora</a>
 			</div>
+		</div>
+		<div class="jumbotron text-center">
+			<p>No te preocupes si no encuentras tu mueble ideal, <strong>trabajamos sobre pedido</strong>, lo tendrás justo como lo estas imaginando</p>
 		</div>
 	</section>
 	<footer>

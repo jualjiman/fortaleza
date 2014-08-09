@@ -46,8 +46,7 @@
 			        <li class="active"><a href="/contacto/"><span class="icon-contact"></span>Contacto</a></li>
 			      </ul>
 			      
-			      <form class="navbar-form navbar-right" role="search" action="/busqueda/" method="POST">
-			      	{% csrf_token %}
+			      <form class="navbar-form navbar-right" role="search" action="/busqueda/" method="GET">
 		        	<div class="form-group">
 		          		{# <input type="text" class="form-control" placeholder="¿Qué estas buscando?"> #}
 		          		{{ searchform.pista.errors }}
@@ -110,6 +109,9 @@
 			  	</div>
 			</form>
 	    </div>
+	    <div class="jumbotron text-center put-border-top">
+			<p>No te preocupes si no encuentras tu mueble ideal, <strong>trabajamos sobre pedido</strong>, lo tendrás justo como lo estas imaginando</p>
+		</div>
 	</section>
 	<footer>
 		<div class="fstFooter">

@@ -47,8 +47,7 @@
 			        <li><a href="/contacto/"><span class="icon-contact"></span>Contacto</a></li>
 			      </ul>
 			      
-		        	<form class="navbar-form navbar-right" role="search" action="/busqueda/" method="POST">
-			      	{% csrf_token %}
+		        	<form class="navbar-form navbar-right" role="search" action="/busqueda/" method="GET">
 		        	<div class="form-group">
 		          		{# <input type="text" class="form-control" placeholder="¿Qué estas buscando?"> #}
 		          		{{ searchform.pista.errors }}
@@ -114,13 +113,13 @@
 				</ul>
 			</article>
 		</div>
-		<div class="jumbotron text-center">
+		<div class="jumbotron text-center put-border-bottom">
 			<h2>Bienvenido a <strong>Carpintería la Fortaleza</strong></h2>
-			<p>Embellece tus espacios con muebles hechos a la medida, con la más alta <strong>calidad</strong> y al <strong>mejor precio</strong> de todo Acapulco.</p>
+			<p>Embellece tus espacios con muebles hechos a la medida, con la más alta <strong>calidad</strong> y al <strong>mejor precio</strong>, sin duda, tu mejor opción en todo Acapulco.</p>
 		</div>
 		<article class="productosPrincipal">
 			<div class="container">
-				<h3 class="mainOrange"><span class="icon-stats title-ic"></span>Productos destacados</h3>
+				<h3 class="mainOrange"><span class="icon-stats title-ic"></span>Algunos de los muebles que podrían estar en tu hogar</h3>
 				<div class="row">
 					
 						{% for mueble in muebles %}
@@ -135,8 +134,12 @@
 				      	{% endfor %}
 					
 				</div>
+		      	
 			</div>
 		</article>
+		<div class="jumbotron text-center">
+			<p>No te preocupes si no encuentras tu mueble ideal, <strong>trabajamos sobre pedido</strong>, lo tendrás justo como lo estas imaginando</p>
+		</div>
 		<div class="container-fluid asking-block">
 			<div class="container">
 				<h4 class="cwhite setInline-Block">¿Te gustó? Luciría <strong>espectacular!</strong></h4>

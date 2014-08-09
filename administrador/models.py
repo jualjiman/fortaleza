@@ -30,7 +30,7 @@ class Categoria(models.Model):
 
 class Acabado(models.Model):
 	titulo = models.CharField(max_length=60)
-	descripcion = models.TextField(blank = True)
+	descripcion = models.TextField(blank = True, default="acabado")
 	imagen = ImageField(upload_to = "acabados")
 	activo = models.BooleanField(default=True)
 	votos = models.IntegerField(default=0, editable=False)
@@ -40,7 +40,7 @@ class Acabado(models.Model):
 
 class Madera(models.Model):
 	titulo = models.CharField(max_length=60)
-	descripcion = models.TextField(blank = True)
+	descripcion = models.TextField(blank = True, default="madera de")
 	imagen = ImageField(upload_to = "maderas")
 	activo = models.BooleanField(default=True)
 	votos = models.IntegerField(default=0, editable=False)
