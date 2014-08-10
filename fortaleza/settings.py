@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 # import sys
 # reload(sys)
 # sys.setdefaultencoding('utf-8')
