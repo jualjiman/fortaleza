@@ -17,7 +17,7 @@ def home(request):
 	# lt = lower that
 	sliders = Slider.objects.filter(activo = True)
 	categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True)
-	muebles = Mueble.objects.all().order_by("votos")[:5]
+	muebles = Mueble.objects.all().order_by("votos")[:6]
 	searchform = BusquedaForm()
 
 	return render(request,"index.html",{"sliders": sliders, "categorias":categorias,"muebles":muebles,'searchform': searchform,})
