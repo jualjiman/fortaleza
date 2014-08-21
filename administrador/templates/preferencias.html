@@ -1,0 +1,21 @@
+{% load thumbnail %}
+<div class="col-12-xs addBottomMediumMargin">
+	<h4 class="cwhite setInline-Block">
+		{% if preferencias|length == 1 %}
+			¿Te gusto? Luciría <strong>espectacular!</strong>
+		{% else %}
+			¿Te gustaron? Lucirían <strong>espectaculares!</strong>
+		{% endif %}
+		</h4>
+	<a href="/contacto/" class="btn btn-primary alinearBotonAsk typo18px">Tomemos medidas ya mismo!</a>
+</div>
+{% for preferencia in preferencias %}
+	{% thumbnail preferencia.imagenPortada "400x400" crop="center" as im %}
+		<a href="/mueble/{{preferencia.categoria_id}}/{{preferencia.id}}/" class="col-xs-4 col-sm-3 col-md-2">
+			<div class="thumbnail cwhite">
+		      <img src="{{ im.url }}" alt="...">
+		    </div>
+		    <p class="text-center cwhite">{{preferencia.titulo}}</p>
+		</a>
+	{% endthumbnail %}
+{% endfor %}

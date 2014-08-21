@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^catalogo-acabados/$', 'administrador.views.catalogo_acabados', name='catalogo_acabados'),
     url(r'^mueble/(\d+)/(\d+)/$', 'administrador.views.mueble', name='mueble'),
     url(r'^busqueda/$', 'administrador.views.busqueda', name='busqueda'),
+    url(r'^preferencias/$', 'administrador.views.preferencias', name='preferencias'),
 )
 
 urlpatterns += patterns('',url(r'^/webapps/fortalezac/fortaleza/media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,}),)

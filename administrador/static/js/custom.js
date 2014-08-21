@@ -1,5 +1,7 @@
+var nstorange = "clfFavs1134253563585236726482564348237";
+
 $(function(){
-	initialize();
+    //
 });
 
 function ocultandoInfo(){
@@ -12,17 +14,6 @@ function limpiandoFormulario(){
 	$('#id_nombre').val("");
     $('#id_email').val("");
     $('#id_mensaje').val("");
-}
-
-//contact map
-function initialize() {
-	var ubicacion = new google.maps.LatLng(16.844216, -99.878995);
-	var mapOptions = {
-	  	center: ubicacion,
-	  	zoom: 12,
-	  	mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	var map = new google.maps.Map($("#map-content")[0], mapOptions);
 }
 
 $("#btnSearch").click(function(e){
@@ -77,7 +68,6 @@ $(".modalbtn").click(function(e){
     var idp = vals[0];
     var nim = vals[1];
 
-    console.log(idp + " * " + nim);
     $.ajax({
         type: "POST",
         url: "/imgProducto/",  // or just url: "/my-url/path/"

@@ -67,7 +67,7 @@
 					<h3 class="mainOrange"><span class="icon-product title-ic"></span>{{ mueble.titulo }}</h3>
 					
 					{% csrf_token %}
-
+					<input type="hidden" id="mid" value="{{ mueble.id}}">
 					<div class="row"> 
 						{% thumbnail mueble.imagenPortada "850x600" crop="center" as im %}
 						<div class="col-xs-12">
@@ -164,8 +164,12 @@
 		</div>
 		<div class="container-fluid asking-block">
 			<div class="container">
-				<h4 class="cwhite setInline-Block">¿Te gustó? Luciría <strong>espectacular!</strong></h4>
-				<a href="/contacto/" class="btn btn-primary alinearBotonAsk typo18px">Ordena ahora</a>
+				<div class="row" id="asking-block-row">
+					<div class="col-12-xs">
+						<h4 class="cwhite setInline-Block">¿Te gustaron esto? Luciría <strong>espectacular!</strong></h4>
+						<a href="/contacto/" class="btn btn-primary alinearBotonAsk typo18px">Tomemos medidas ya mismo!</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="jumbotron text-center">
@@ -183,9 +187,10 @@
 	
 	<!-- ===================JS============================ -->
 	<script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
-	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script src="{% static "js/bootstrap.min.js" %}"></script>
 	<script src="{% static "js/custom.js" %}"></script>
+	<script src="{% static "js/prefs.js" %}"></script>
+	<script src="{% static "js/tempo.js" %}"></script>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

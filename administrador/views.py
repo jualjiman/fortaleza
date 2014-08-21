@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Count
 from django.shortcuts import render,get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.csrf import csrf_exempt
 from .models import *
 from .forms import *
 
@@ -27,6 +28,11 @@ def catalogo_muebles_idc(request, idc):
 	categoria = get_object_or_404(Categoria, pk = idc, activo = True)
 	categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True).order_by("votos")
 	muebles = Mueble.objects.filter(categoria_id = idc, activo = True)
+
+	cat = Categoria.objects.get(pk = idc)
+	cat.votos += 1
+	cat.save()
+
 	searchform = BusquedaForm()
 
 	return render(request,"catalogo-muebles.html",{
@@ -157,4 +163,21 @@ def contacto(request):
 		form = ContactoForm()
 		searchform = BusquedaForm()
 		return render(request,"contacto.html",{"form": form,"searchform": searchform})
+
+@csrf_exempt
+def preferencias(request):
+	if request.is_ajax():
+	    prefs = request.POST['prefs'].split("-")
+
+	    p1 = prefs[0]
+	    p2 = prefs[1]
+	    preferencias = Mueble.objects.filter(Q(id= p2) | Q(id = p1))
+
+	    pf = Mueble.objects.get(id = p1)
+	    pf.votos += 1
+	    pf.save()
+
+	    return render(request,"preferencias.html",{"preferencias": preferencias})
+	else:
+		return HttpResponseRedirect("/")
 
