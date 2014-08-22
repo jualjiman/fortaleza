@@ -157,7 +157,7 @@ def contacto(request):
 
 	    msj = Mensaje(nombre=nombre, email=email,mensaje=mensaje)
 	    msj.save()
-
+	    
 	    return HttpResponse('Ok')
 	else:
 		form = ContactoForm()
