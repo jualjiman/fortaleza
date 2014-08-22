@@ -17,8 +17,8 @@ def home(request):
 	# gt = greater that
 	# lt = lower that
 	sliders = Slider.objects.filter(activo = True)
-	categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True)
-	muebles = Mueble.objects.filter(activo = True).order_by("votos")[:6]
+	categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True).order_by("-votos")
+	muebles = Mueble.objects.filter(activo = True).order_by("-votos")[:6]
 	searchform = BusquedaForm()
 
 	return render(request,"index.html",{"sliders": sliders, "categorias":categorias,"muebles":muebles,'searchform': searchform,})
@@ -26,7 +26,7 @@ def home(request):
 def catalogo_muebles_idc(request, idc):
 
 	categoria = get_object_or_404(Categoria, pk = idc, activo = True)
-	categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True).order_by("votos")
+	categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True).order_by("-votos")
 	muebles = Mueble.objects.filter(categoria_id = idc, activo = True)
 
 	cat = Categoria.objects.get(pk = idc)
@@ -43,8 +43,8 @@ def catalogo_muebles_idc(request, idc):
 		"searchform": searchform,})
 
 def catalogo_muebles(request):
-	# muebles = Categoria.objects.all().order_by("votos") aqui regreso todos los objetos de categoria  ordenados por votos
-	categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True).order_by("votos") #aqui retorno todos los objetos de categoria ordenados por vistas, pero tambien incluyo una antotacion por cada instancia donde deposito el numero de muebles por categoria, y los filtro obteniendo solo los que tienen mas de 1 mueble
+	# muebles = Categoria.objects.all().order_by("-votos") aqui regreso todos los objetos de categoria  ordenados por votos
+	categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True).order_by("-votos") #aqui retorno todos los objetos de categoria ordenados por vistas, pero tambien incluyo una antotacion por cada instancia donde deposito el numero de muebles por categoria, y los filtro obteniendo solo los que tienen mas de 1 mueble
 	# despues puedo accederlo desde "mueble__count"
 	# categorias = gettingProductsOfCatalogCategories(categorias) de esta manera me evito utilizar un metodo aparte que hace lo mismo
 	searchform = BusquedaForm()
@@ -76,12 +76,12 @@ def catalogo_acabados(request):
 
 def mueble(request,idc,idp):
 	mueble = get_object_or_404(Mueble,pk=idp)
-	sugerencias = Mueble.objects.filter(categoria_id = idc,activo = True).exclude(pk=idp).order_by("votos")[:6]
+	sugerencias = Mueble.objects.filter(categoria_id = idc,activo = True).exclude(pk=idp).order_by("-votos")[:6]
 	sug = True #es una sujerencia
 	searchform = BusquedaForm()
 	
 	if sugerencias.count() == 0:
-		sugerencias = Mueble.objects.filter(activo = True).exclude(pk=idp).order_by("votos")[:6]
+		sugerencias = Mueble.objects.filter(activo = True).exclude(pk=idp).order_by("-votos")[:6]
 		sug = False #solamente le estas mostrando los demas
 
 	return render(request,"mueble.html",{"mueble": mueble,"sugerencias":sugerencias,'sug':sug,'searchform': searchform})
@@ -121,7 +121,7 @@ def busqueda(request):
 			pista = searchform.cleaned_data['pista']
 			if pista != u'':
 				muebles = Mueble.objects.filter(Q(activo = True), Q(titulo__contains=pista) | Q(descripcion__contains=pista) | Q(acabado__titulo__contains=pista) | Q(madera__titulo__contains=pista))
-				categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True, nombre__contains=pista).order_by("votos")
+				categorias = Categoria.objects.annotate(Count('mueble')).filter(mueble__count__gt = 0, activo = True, nombre__contains=pista).order_by("-votos")
 				acabados = Acabado.objects.filter(Q(activo = True), Q(titulo__contains=pista) | Q(descripcion__contains=pista))
 				maderas  = Madera.objects.filter(Q(activo = True), Q(titulo__contains=pista) | Q(descripcion__contains=pista))
 
@@ -171,7 +171,7 @@ def preferencias(request):
 
 	    p1 = prefs[0]
 	    p2 = prefs[1]
-	    preferencias = Mueble.objects.filter(Q(id= p2) | Q(id = p1))
+	    preferencias = Mueble.objects.filter(Q(id= p2) | Q(id = p1)).order_by("-votos")
 
 	    pf = Mueble.objects.get(id = p1)
 	    pf.votos += 1

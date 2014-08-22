@@ -2,6 +2,8 @@ $(function(){
 	analisandoPreferencias();
 });
 
+var enableShowLog = false;
+
 var id = 0;
 var tPermanencia = 0;
 
@@ -15,9 +17,14 @@ var favs = {
 function analisandoPreferencias(){
 	id = $("#mid").val();
 	local = JSON.parse(localStorage.getItem(nstorange));
-	if(local !== null)
+	if(local !== null){
 		favs = local;
-    console.log(">[i:" +favs.f1.i + " t:" + favs.f1.t + "][i:" + favs.f2.i + " t:" + favs.f2.t + "] init:" + favs.init);
+		if(id === favs.f1.i)
+			tPermanencia = favs.f1.t;
+		else if(id === favs.f2.i)
+			tPermanencia = favs.f2.t;
+		showPreferences();
+	}
     setInterval(temporizador,2000);
 }
 
@@ -29,6 +36,7 @@ function temporizador(){
 function guardarPermanencia(){
 	// Check browser support
 	if (typeof(Storage) != "undefined") {
+
 	    if(tPermanencia > favs.f1.t){
 	    	if(favs.f2.t == favs.f1.t){
 	    		favs.f2.i = favs.f1.i;
@@ -44,6 +52,16 @@ function guardarPermanencia(){
 	    }
 	    // Store
 	    localStorage.setItem(nstorange, JSON.stringify(favs));
-	    console.log("[i:" +favs.f1.i + " t:" + favs.f1.t + "][i:" + favs.f2.i + " t:" + favs.f2.t + "] init:" + favs.init);
+	    showPreferences();
 	}
 }
+
+function enableShowPreferences(opt){
+	enableShowLog = opt;
+}
+
+function showPreferences(){
+	if(enableShowLog)
+	console.log("[i:" +favs.f1.i + " t:" + favs.f1.t + "][i:" + favs.f2.i + " t:" + favs.f2.t + "] init:" + favs.init);
+}
+
