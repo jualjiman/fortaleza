@@ -4,9 +4,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>Carpinteria la fortaleza</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Carpinteria la fortaleza</title>
+	<meta name="description" content="{{ mueble.titulo }} - {{ mueble.descripcion|slice:':125' }}" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
 	<link rel="stylesheet" href="{% static "css/custom.css" %}">
@@ -72,7 +73,7 @@
 						{% thumbnail mueble.imagenPortada "850x600" crop="center" as im %}
 						<div class="col-xs-12">
 							<a href="{{ mueble.id}}-1" class="thumbnail mainOrange modalbtn addBottomMediumMargin">
-								<img src="{{ im.url }}" alt="...">
+								<img src="{{ im.url }}" alt="{{ mueble.titulo }}">
 						    </a>
 						</div>
 						{% endthumbnail %}
