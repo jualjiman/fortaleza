@@ -13,7 +13,7 @@
 	{% thumbnail preferencia.imagenPortada "400x400" crop="center" as im %}
 		<a href="/mueble/{{preferencia.categoria_id}}/{{preferencia.id}}/" class="col-xs-4 col-sm-3 col-md-2">
 			<div class="thumbnail cwhite">
-		      <img src="{{ im.url }}" alt="...">
+		      <img src="{{ im.url }}" alt="{{preferencia.titulo}}">
 		    </div>
 		    <p class="text-center cwhite">{{preferencia.titulo}}</p>
 		</a>
