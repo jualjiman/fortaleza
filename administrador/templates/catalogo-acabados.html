@@ -72,7 +72,7 @@
 								{% thumbnail acabado.imagen "400x400" crop="center" as im%}
 								<div class="col-xs-6 col-sm-4 col-md-2">
 									<a href="/busqueda/?pista={{acabado.titulo.split|join:"+"}}" class="thumbnail mainOrange">
-								      <img src="{{ im.url }}" alt="...">
+								      <img src="{{ im.url }}" alt="{{acabado.titulo}}">
 								    </a>
 								    <p class="text-center mainOrange">{{acabado.titulo}}</p>
 								</div>
@@ -87,7 +87,7 @@
 							{% thumbnail madera.imagen "400x400" crop="center" as im%}
 							<div class="col-xs-6 col-sm-4 col-md-2">
 								<a href="/busqueda/?pista={{madera.titulo.split|join:"+"}}" class="thumbnail mainOrange">
-							      <img src="{{ im.url }}" alt="...">
+							      <img src="{{ im.url }}" alt="{{madera.titulo}}">
 							    </a>
 							    <p class="text-center mainOrange">{{madera.titulo}}</p>
 							</div>

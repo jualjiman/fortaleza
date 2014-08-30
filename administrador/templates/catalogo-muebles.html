@@ -83,7 +83,7 @@
 							{% thumbnail mueble.imagenPortada "400x400" crop="center" as im%}
 							<div class="col-xs-6 col-md-3">
 								<a href="/mueble/{{mueble.categoria_id}}/{{mueble.id}}" class="thumbnail mainOrange">
-							      <img src="{{ im.url }}" alt="...">
+							      <img src="{{ im.url }}" alt="{{mueble.titulo}}">
 							    </a>
 							    <p class="text-center mainOrange">{{mueble.titulo}}</p>
 							</div>
