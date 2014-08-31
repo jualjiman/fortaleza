@@ -48,8 +48,8 @@ class MaderasAdmin(admin.ModelAdmin):
 	imagen_madera.allow_tags = True
 
 class ContactoAdmin(admin.ModelAdmin):
-	list_display = ('nombre','telefono','direccion','email','activo',)
-	search_fields = ['nombre','email',]
+	list_display = ('nombre','telefono','rfc','email','activo',)
+	search_fields = ['nombre','email','rfc']
 
 class MensajeAdmin(admin.ModelAdmin):
 	list_display = ('nombre','email','fecha',)
