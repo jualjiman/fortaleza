@@ -12,11 +12,7 @@ class Migration(SchemaMigration):
         db.create_table(u'administrador_busqueda', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('palabra', self.gf('django.db.models.fields.CharField')(max_length=100)),
-<<<<<<< HEAD
             ('repeticiones', self.gf('django.db.models.fields.IntegerField')(default=1)),
-=======
-            ('repeticiones', self.gf('django.db.models.fields.IntegerField')(default=0)),
->>>>>>> 156553cac39ae88cab16b8b623f9d599cb1d4e29
         ))
         db.send_create_signal(u'administrador', ['Busqueda'])
 
@@ -40,11 +36,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Busqueda'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'palabra': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-<<<<<<< HEAD
             'repeticiones': ('django.db.models.fields.IntegerField', [], {'default': '1'})
-=======
-            'repeticiones': ('django.db.models.fields.IntegerField', [], {'default': '0'})
->>>>>>> 156553cac39ae88cab16b8b623f9d599cb1d4e29
         },
         u'administrador.categoria': {
             'Meta': {'object_name': 'Categoria'},
