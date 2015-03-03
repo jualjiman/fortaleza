@@ -28,11 +28,11 @@ sys.setdefaultencoding('utf-8')
 SECRET_KEY = '1qx@nsx782i#%k3ys1yp*ebhndm-aq$+r=w%m#g-6k55ifc8dy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['.fortaleza.jualjiman.com', '.fortaleza.jualjiman.com.']
+ALLOWED_HOSTS = ['.carpinterialafortaleza.com','.carpinterialafortaleza.com.']
 
 
 # Application definition
