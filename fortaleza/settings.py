@@ -28,11 +28,14 @@ sys.setdefaultencoding('utf-8')
 SECRET_KEY = '1qx@nsx782i#%k3ys1yp*ebhndm-aq$+r=w%m#g-6k55ifc8dy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['.carpinterialafortaleza.com','.carpinterialafortaleza.com.']
+ALLOWED_HOSTS = [
+    '.carpinterialafortaleza.com',
+    '.carpinterialafortaleza.com.'
+]
 
 
 # Application definition
@@ -111,7 +114,9 @@ STATICFILES_FINDERS = (
 
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
-MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
+MEDIA_ROOT = os.sep.join(
+    os.path.abspath(__file__).split(os.sep)[:-2] + ['media']
+)
 MEDIA_URL = '/media/'
 
 # Local Settings import
@@ -119,4 +124,3 @@ try:
     from local_settings import *  # NOQA
 except:
     pass
-
