@@ -1,1 +1,4 @@
 media/*
+*.sqlite3
+*.pyc
+fortaleza/local_settings.py
